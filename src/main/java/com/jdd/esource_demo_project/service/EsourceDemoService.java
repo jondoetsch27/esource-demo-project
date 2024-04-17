@@ -2,16 +2,20 @@ package com.jdd.esource_demo_project.service;
 
 import java.util.Arrays;
 import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class EsourceDemoService {
-    private static final int MIN = 0;
-    private static final int MAX = 50;
-
+    private final Integer getMin;
+    private final Integer getMax;
     private final RandomNumberService randomNumberService;
-    public EsourceDemoService(RandomNumberService randomNumberService) {
+
+    public EsourceDemoService(@Qualifier("getMin") Integer getMin, @Qualifier("getMax") Integer getMax, RandomNumberService randomNumberService) {
+        this.getMin = getMin;
+        this.getMax = getMax;
         this.randomNumberService = randomNumberService;
     }
 
@@ -19,7 +23,7 @@ public class EsourceDemoService {
         Integer[][] randomNumbers = randomNumberService.generateRandomNumbers();
 
         ArrayList<Integer> availableNumbers = new ArrayList<>();
-        for (int k = MIN; k <= MAX; k++) {
+        for (int k = getMin; k <= getMax; k++) {
             if (!Arrays.asList(randomNumbers[0]).contains(k)
                 && !Arrays.asList(randomNumbers[1]).contains(k)
                 && !Arrays.asList(randomNumbers[2]).contains(k)

@@ -1,26 +1,35 @@
 package com.jdd.esource_demo_project.service;
 
+import com.jdd.esource_demo_project.EsourceDemoProjectTestConfiguration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.context.annotation.Import;
 
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
+@Import({EsourceDemoProjectTestConfiguration.class})
 public class EsourceDemoServiceTests {
 
     private EsourceDemoService subject;
+
+    @Autowired
+    private Integer getMin;
+
+    @Autowired
+    private Integer getMax;
 
     @MockBean
     private RandomNumberService randomNumberService;
 
     @BeforeEach
     public void setUp() {
-        subject = new EsourceDemoService(randomNumberService);
+        subject = new EsourceDemoService(getMin, getMax, randomNumberService);
     }
 
     @Test
