@@ -21,8 +21,8 @@ public class EsourceDemoController {
 
     @GetMapping("/run")
     public ResponseEntity<EsourceDemoModel> runEsourceDemo() {
-        Number[] availableNumbers;
-        Number[] largestPrimeNumber;
+        Integer[] availableNumbers;
+        Integer[] largestPrimeNumber;
         ResponseEntity<EsourceDemoModel> responseEntity;
 
         try {

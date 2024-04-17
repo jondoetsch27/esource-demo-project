@@ -36,9 +36,9 @@ public class EsourceDemoControllerTests {
 
     @Test
     public void runEsourceDemoTest() throws Exception {
-        Number[] mockValues = new Number[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        Integer[] mockValues = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Mockito.when(esourceDemoService.availableNumbers()).thenReturn(mockValues);
-        Mockito.when(esourceDemoService.largestPrimeNumber(mockValues)).thenReturn(new Number[]{7});
+        Mockito.when(esourceDemoService.largestPrimeNumber(mockValues)).thenReturn(new Integer[]{7});
         mockMvc.perform(MockMvcRequestBuilders.get("/run"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
