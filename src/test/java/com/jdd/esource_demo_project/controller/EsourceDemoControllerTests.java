@@ -1,7 +1,6 @@
 package com.jdd.esource_demo_project.controller;
 
 import com.jdd.esource_demo_project.service.EsourceDemoService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdd.esource_demo_project.service.RandomNumberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

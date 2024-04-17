@@ -43,7 +43,11 @@ public class EsourceDemoServiceTests {
     @CsvSource({"2,3,5,7,11", "13,17,19,23,29", "31,37,41,43,47"})
     public void largestPrimeNumberTest(String num1, String num2, String num3, String num4, String num5) {
         Integer[] availableNumbers = new Integer[]{
-            Integer.valueOf(num1), Integer.valueOf(num2), Integer.valueOf(num3), Integer.valueOf(num4), Integer.valueOf(num5)
+            Integer.valueOf(num1),
+            Integer.valueOf(num2),
+            Integer.valueOf(num3),
+            Integer.valueOf(num4),
+            Integer.valueOf(num5)
         };
         Integer expectedResult = Integer.valueOf(num5);
         Integer actualResult = subject.largestPrimeNumber(availableNumbers);

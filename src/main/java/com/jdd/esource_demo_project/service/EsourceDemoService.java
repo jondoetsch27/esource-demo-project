@@ -2,16 +2,14 @@ package com.jdd.esource_demo_project.service;
 
 import java.util.Arrays;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class EsourceDemoService {
+
     private final Integer getMin;
     private final Integer getMax;
-
     public EsourceDemoService(@Qualifier("getMin") Integer getMin, @Qualifier("getMax") Integer getMax) {
         this.getMin = getMin;
         this.getMax = getMax;
@@ -53,13 +51,11 @@ public class EsourceDemoService {
         if (number < 2) {
             return false;
         }
-
         for (int i = 2; i < number; ++i) {
             if (number % i == 0) {
                 return false;
             }
         }
-
         return true;
     }
 }
