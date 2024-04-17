@@ -6,10 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 @SpringBootTest
@@ -24,12 +22,9 @@ public class EsourceDemoServiceTests {
     @Autowired
     private Integer getMax;
 
-    @MockBean
-    private RandomNumberService randomNumberService;
-
     @BeforeEach
     public void setUp() {
-        subject = new EsourceDemoService(getMin, getMax, randomNumberService);
+        subject = new EsourceDemoService(getMin, getMax);
     }
 
     @Test
@@ -39,9 +34,8 @@ public class EsourceDemoServiceTests {
             {31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 0, 2, 4, 6, 8},
             {10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38}
         };
-        Mockito.when(randomNumberService.generateRandomNumbers()).thenReturn(randomNumberMock);
         Integer[] expectedResult = new Integer[]{40, 42, 44, 46, 48, 50};
-        Integer[] actualResult = subject.availableNumbers();
+        Integer[] actualResult = subject.availableNumbers(randomNumberMock);
         Assertions.assertArrayEquals(expectedResult, actualResult);
     }
 

@@ -11,17 +11,13 @@ import org.springframework.stereotype.Service;
 public class EsourceDemoService {
     private final Integer getMin;
     private final Integer getMax;
-    private final RandomNumberService randomNumberService;
 
-    public EsourceDemoService(@Qualifier("getMin") Integer getMin, @Qualifier("getMax") Integer getMax, RandomNumberService randomNumberService) {
+    public EsourceDemoService(@Qualifier("getMin") Integer getMin, @Qualifier("getMax") Integer getMax) {
         this.getMin = getMin;
         this.getMax = getMax;
-        this.randomNumberService = randomNumberService;
     }
 
-    public Integer[] availableNumbers() {
-        Integer[][] randomNumbers = randomNumberService.generateRandomNumbers();
-
+    public Integer[] availableNumbers(Integer[][] randomNumbers) {
         ArrayList<Integer> availableNumbers = new ArrayList<>();
         for (int k = getMin; k <= getMax; k++) {
             if (!Arrays.asList(randomNumbers[0]).contains(k)
