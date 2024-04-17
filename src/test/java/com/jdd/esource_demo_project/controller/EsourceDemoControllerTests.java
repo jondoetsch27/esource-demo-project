@@ -35,21 +35,11 @@ public class EsourceDemoControllerTests {
     public void contextLoads() {}
 
     @Test
-    public void userStoryOneTest() throws Exception {
+    public void runEsourceDemoTest() throws Exception {
         Number[] mockValues = new Number[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Mockito.when(esourceDemoService.availableNumbers()).thenReturn(mockValues);
-        mockMvc.perform(MockMvcRequestBuilders.get("/one"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    public void userStoryTwoTest() throws Exception {
-        Number[] mockValues = new Number[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        Number[] mockPrime = new Number[]{7};
-        Mockito.when(esourceDemoService.largestPrimeNumber(mockValues)).thenReturn(mockPrime);
-        mockMvc.perform(
-                MockMvcRequestBuilders.get("/two")
-                        .param("availableNumbers", objectMapper.writeValueAsString(mockValues)))
+        Mockito.when(esourceDemoService.largestPrimeNumber(mockValues)).thenReturn(new Number[]{7});
+        mockMvc.perform(MockMvcRequestBuilders.get("/run"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
