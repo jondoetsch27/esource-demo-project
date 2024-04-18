@@ -1,9 +1,8 @@
 package com.jdd.esource_demo_project.service;
 
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.Random;
 
 @Service
 public class RandomNumberService {
